@@ -1,21 +1,21 @@
 #include "Keyboard.h"
 
-const int buttonPin = 4;          // input pin for pushbutton
-int previousButtonState = HIGH;   // for checking the state of a pushButton
-int counter = 0;                  // button push counter
+const int buttonPin = 2;
+const int triggerPin = 3;
+int buttonState = 0;
 
 void setup() {
   pinMode(buttonPin, INPUT_PULLDOWN);
+  pinMode(triggerPin, OUTPUT);
   Keyboard.begin();
 }
 
 void loop() {
-  int buttonState = digitalRead(buttonPin);
-  if ((buttonState != previousButtonState) && (buttonState == HIGH)) {
-    counter++;
-    Keyboard.print("You pressed the button ");
-    Keyboard.print(counter);
-    Keyboard.println(" times.");
+  buttonState = digitalRead(buttonPin);
+  if (buttonState){
+    Keyboard.print("j");
+    digitalWrite(triggerPin, HIGH);
+  } else {
+    digitalWrite(triggerPin, LOW);
   }
-  previousButtonState = buttonState;
 }
