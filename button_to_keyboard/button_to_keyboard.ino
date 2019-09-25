@@ -1,7 +1,7 @@
 #include "Keyboard.h"
 
 //physical button tied to 3.3v
-const int buttonPin = 2;
+const int buttonPin = 1;
 const int ledPin = 13;
 
 int toggle = 1;         //one press of button is one letter, does not repeat
